@@ -1,5 +1,6 @@
 package org.example.service;
 
+import org.example.annotation.InTransaction;
 import org.example.ds.CurrencyType;
 import org.springframework.stereotype.Service;
 
@@ -8,6 +9,7 @@ public class MyCurrencyService {
     public void changeCurrency(int amount,int to) {
 
     }
+    @InTransaction
     public void changeCurrency(int amount) {
 
     }
