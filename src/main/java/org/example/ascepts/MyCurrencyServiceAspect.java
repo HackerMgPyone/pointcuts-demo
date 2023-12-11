@@ -16,7 +16,21 @@ public class MyCurrencyServiceAspect {
     public void withinPointcut(){
 
     }
-    @Before("withinPointcut()")
+    @Pointcut("@within(org.example.annotation.Secured)")
+    public void annotationWithinPointcut(){
+
+    }
+    @Before("annotationWithinPointcut()")
+    public void currencyAnnotationWithinAdvice(JoinPoint joinPoint) throws Throwable{
+        System.out.println(
+                String.format("%s's %s method invoked before with %s",
+                        joinPoint.getTarget().getClass().getSimpleName(),
+                        joinPoint.getSignature().getName(),
+                        Arrays.toString(joinPoint.getArgs()))
+        );
+
+    }
+//    @Before("withinPointcut()")
     public void currencyAdvice(JoinPoint joinPoint) throws Throwable{
         System.out.println(
                 String.format("%s's %s method invoked before with %s",
